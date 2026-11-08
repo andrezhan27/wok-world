@@ -1,0 +1,4 @@
+dist/
+.openai/
+public/images/*.png
+.env*

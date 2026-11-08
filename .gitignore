@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+.next/
+dist/
+public/images/*.png
+.env*
+!.env.example
+.vercel/
