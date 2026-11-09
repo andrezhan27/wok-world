@@ -24,7 +24,7 @@ export const restaurant = {
   images: {
     logo: 'logo',
     heroDesktop: 'hero-desktop',
-    heroMobile: 'hero-mobile',
+    heroMobile: 'hero-storefront-portrait',
     reservation: 'reserve-card',
     reviewBackdrop: 'reviews-section',
   },

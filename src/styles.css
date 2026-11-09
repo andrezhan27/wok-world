@@ -154,7 +154,7 @@ h2 em { font-weight: 400; color: var(--copper); }
 .hero-photo, .hero-overlay { position: absolute; inset: 0; pointer-events: none; }
 .hero-wave { position: absolute; inset: auto 0 -1px; width: 100%; height: clamp(24px, 4.6vw, 78px); z-index: 2; fill: var(--paper); pointer-events: none; }
 .hero::after { content: ""; position: absolute; inset: auto 0 0; height: 2px; z-index: 2; background: var(--paper); pointer-events: none; }
-.hero-photo img { height: 100%; width: 100%; object-fit: contain; filter: saturate(.83) sepia(.16); }
+.hero-photo img { height: 100%; width: 100%; object-fit: cover; filter: saturate(.83) sepia(.16); }
 .hero-overlay {
   background:
     radial-gradient(ellipse at 50% 30%, #21171052 5%, transparent 66%),
@@ -261,7 +261,7 @@ h2 em { font-weight: 400; color: var(--copper); }
 .info-social a { display: flex; align-items: center; gap: 7px; min-height: 29px; width: fit-content; }
 
 .reviews-section { position: relative; overflow: hidden; background: var(--paper); }
-.reviews-photo { position: relative; aspect-ratio: 2.15; margin-top: clamp(28px, 5vw, 63px); }
+.reviews-photo { position: relative; max-width: 900px; aspect-ratio: 2.15; margin-top: clamp(28px, 5vw, 63px); }
 .reviews-photo > .photo { height: 100%; border-radius: 9px; }
 .google-mark { width: 22px; height: 22px; }
 .google-rating {

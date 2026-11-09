@@ -55,7 +55,7 @@ export function ReviewsSection() {
       </div>
       <div className="container reviews-photo">
         <Photo photo={{ file: restaurant.images.reviewBackdrop, position: '50% 72%' }}
-          sizes="(max-width: 1440px) 90vw, 1280px" decorative />
+          sizes="(max-width: 1000px) 90vw, 900px" decorative />
         <a className="google-rating" href={restaurant.googlePlaceUrl} target="_blank" rel="noopener noreferrer">
           <GoogleMark />
           <div>

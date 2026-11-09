@@ -18,7 +18,8 @@ function Hero() {
   return (
     <section id="inicio" className="hero" aria-labelledby="hero-title">
       <picture className="hero-photo">
-        <source media="(max-width: 640px) and (orientation: portrait)" srcSet={`${imageUrl(heroMobile, '-540')} 540w, ${imageUrl(heroMobile)} 941w`} sizes="100vw" />
+        <source media="(max-width: 640px) and (orientation: portrait)" srcSet={`${imageUrl(heroMobile, '-540')} 540w, ${imageUrl(heroMobile)} 941w`}
+          width={941} height={1672} sizes="100vw" />
         <img src={imageUrl(heroDesktop)} srcSet={`${imageUrl(heroDesktop, '-1100')} 1100w, ${imageUrl(heroDesktop)} 1672w`}
           width={1672} height={941} sizes="100vw" fetchPriority="high" alt="" />
       </picture>
