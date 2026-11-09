@@ -2,7 +2,6 @@
 
 import { useLanguage } from './language';
 import { useEffect, useState } from 'react';
-import { Icon } from './icon';
 
 export function HomeMotion() {
   useEffect(() => {
@@ -30,45 +29,28 @@ export function HomeMotion() {
   return null;
 }
 
-function useMotionAllowed(manualOnPhones = false) {
+function useMotionAllowed() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     if (!('IntersectionObserver' in window)) return;
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-    const phone = matchMedia('(max-width: 640px)');
-    const syncMotion = () => setAnimate(!reducedMotion.matches && !(manualOnPhones && phone.matches));
+    const syncMotion = () => setAnimate(!reducedMotion.matches);
     syncMotion();
     reducedMotion.addEventListener('change', syncMotion);
-    if (manualOnPhones) phone.addEventListener('change', syncMotion);
-    return () => {
-      reducedMotion.removeEventListener('change', syncMotion);
-      if (manualOnPhones) phone.removeEventListener('change', syncMotion);
-    };
-  }, [manualOnPhones]);
+    return () => reducedMotion.removeEventListener('change', syncMotion);
+  }, []);
 
   return animate;
 }
 
 export function GalleryMotion({ children }) {
-  const { t } = useLanguage();
-  const animate = useMotionAllowed(true);
-  const [paused, setPaused] = useState(false);
+  const animate = useMotionAllowed();
 
   return (
-    <>
-      <div className={`food-rows${animate ? ' is-animated' : ''}${paused ? ' is-paused' : ''}`} id="food-rows">
-        {children}
-      </div>
-      <div className="container food-caption">
-        <p><span className="caption-dot" /> {t('Do balcão à mesa')}</p>
-        <p className="food-swipe-hint">{t('Deslize para ver mais')} <Icon name="arrow" size={14} /></p>
-        <button className="motion-toggle" type="button" aria-controls="food-rows" hidden={!animate} onClick={() => setPaused(!paused)}>
-          <Icon name={paused ? 'play' : 'pause'} size={15} />
-          <span>{t(paused ? 'Retomar fotografias' : 'Pausar fotografias')}</span>
-        </button>
-      </div>
-    </>
+    <div className={`food-rows${animate ? ' is-animated' : ''}`} id="food-rows">
+      {children}
+    </div>
   );
 }
 

@@ -85,7 +85,7 @@ function FoodRows() {
   return (
     <GalleryMotion>
       {foodRows.map((row, index) => (
-        <div key={index} className="food-row" tabIndex={0} role="region" aria-label={`${t('Fotografias do buffet, fila')} ${index + 1}`}>
+        <div key={index} className="food-row" role="region" aria-label={`${t('Fotografias do buffet, fila')} ${index + 1}`}>
           <div className="food-track">
             <div className="food-sequence">
               {row.map(photo => <Photo key={photo.file} photo={photo} sizes={sizes} />)}

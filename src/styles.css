@@ -171,32 +171,23 @@ h2 em { font-weight: 400; color: var(--copper); }
 .hero h1 .brand-wordmark { width: min(clamp(265px, 36vw, 560px), 75vw); margin-inline: auto; filter: drop-shadow(0 2px 12px #21171080); }
 .hero-description { color: var(--light); font-size: clamp(13px, 1.5vw, 17px); font-weight: 600; }
 .hero-book { min-height: 51px; margin-top: 14px; padding-inline: 34px; text-shadow: none; font-size: 13px; }
-.caption-dot { width: 4px; height: 4px; flex: 0 0 4px; border-radius: 50%; }
 
 .buffet-intro { padding-block: var(--section) clamp(34px, 5vw, 66px); }
 .buffet-intro > p:last-child, .space-intro > p { color: var(--muted); max-width: 490px; font-size: 15px; }
 .buffet-intro > p:last-child { margin: 19px auto 0; }
 .food-rows { display: grid; gap: 7px; --tile-gap: 7px; }
-.food-row { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
-.food-row:focus-visible { outline-offset: -3px; }
+.food-row { min-width: 0; overflow: clip; }
 .food-track, .food-sequence { display: flex; width: max-content; }
 .food-sequence { gap: var(--tile-gap); padding-right: var(--tile-gap); }
 .food-copy { display: none; }
-.food-rows.is-animated .food-row { overflow: hidden; }
 .food-rows.is-animated .food-copy { display: flex; }
 .food-rows.is-animated .food-track { animation: drift 83s -7s linear infinite paused; }
 .food-rows.is-animated .food-row:nth-child(2) .food-track { animation-duration: 94s; animation-delay: -24s; animation-direction: reverse; }
-.food-rows.is-animated:not(.is-paused) .food-row.is-visible .food-track { animation-play-state: running; }
+.food-rows.is-animated .food-row.is-visible .food-track { animation-play-state: running; }
 @keyframes drift { to { transform: translateX(-50%); } }
 .photo { position: relative; overflow: hidden; background: var(--paper-deep); }
 .photo img { width: 100%; height: 100%; object-fit: cover; object-position: var(--crop, center); filter: saturate(.84); }
 .food-row .photo { width: max(235px, 23.5vw); aspect-ratio: 3 / 4; }
-.food-caption { display: flex; align-items: center; justify-content: space-between; min-height: 68px; color: var(--muted); }
-.food-caption p, .motion-toggle { display: flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; }
-.food-caption .caption-dot { background: var(--copper); }
-.food-caption .food-swipe-hint { display: none; }
-.motion-toggle { min-height: 44px; border: 0; padding: 0; background: transparent; }
-.motion-toggle:hover { color: var(--copper); }
 
 .menu-wrap { background: var(--wood); color: var(--light); padding-block: clamp(52px, 6.7vw, 96px); }
 .menu-wrap .eyebrow { color: var(--peach); }
@@ -435,12 +426,6 @@ h2 em { font-weight: 400; color: var(--copper); }
 @media (max-width: 640px) {
   :root { --section: 58px; }
   .food-row .photo { width: min(56vw, 280px); }
-  .food-row { scroll-snap-type: x proximity; scroll-padding-inline: var(--gutter); }
-  .food-sequence { padding-inline: var(--gutter); }
-  .food-row .photo { scroll-snap-align: start; }
-  .food-caption { min-height: 54px; gap: 10px; }
-  .food-caption p { letter-spacing: .075em; font-size: 9px; }
-  .food-caption .food-swipe-hint { display: flex; text-align: end; }
   .menu-top { display: grid; gap: 19px; margin-bottom: 19px; }
   .tabs { justify-self: start; }
   .extra-grid { grid-template-columns: minmax(0, 1fr); }
@@ -477,6 +462,6 @@ h2 em { font-weight: 400; color: var(--copper); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .food-rows.is-animated .food-row, .reviews-marquee.is-animated { overflow-x: auto; }
-  .food-rows.is-animated .food-copy, .reviews-marquee.is-animated .review-copy, .motion-toggle { display: none; }
+  .reviews-marquee.is-animated { overflow-x: auto; }
+  .food-rows.is-animated .food-copy, .reviews-marquee.is-animated .review-copy { display: none; }
 }
